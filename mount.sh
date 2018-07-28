@@ -70,6 +70,10 @@ mount()
 
     for folder in "${dir[@]}"
     do
+        if [ ! -d "${folder}" ]; then
+            mkdir -p ${folder}
+        fi
+
         ${sshfs}${folder} ${folder}/
         echo -e "\t- \033[0;32m${folder}/\033[0m"
     done
